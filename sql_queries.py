@@ -1,26 +1,68 @@
 # DROP TABLES
 
-songplay_table_drop = ""
-user_table_drop = ""
-song_table_drop = ""
-artist_table_drop = ""
-time_table_drop = ""
+songplay_table_drop = "DROP TABLE IF EXISTS songplays"
+user_table_drop = "DROP TABLE IF EXISTS users"
+song_table_drop = "DROP TABLE IF EXISTS songs"
+artist_table_drop = "DROP TABLE IF EXISTS artists"
+time_table_drop = "DROP TABLE IF EXISTS time"
 
 # CREATE TABLES
 
-songplay_table_create = ("""
+# This is the fact table that contains the primary keys from the below 4 Dimension tables so that JOINs can be made between the fact table and dimension tables
+songplay_table_create = ("""CREATE TABLE IF NOT EXISTS songplays (
+                                songplay_id int PRIMARY KEY, 
+                                start_time timestamp, 
+                                user_id int, 
+                                level varchar, 
+                                song_id varchar, 
+                                artist_id varchar, 
+                                session_id int,
+                                location varchar,
+                                user_agent varchar
+                                );
 """)
 
-user_table_create = ("""
+# This is the dimension table containing the information about users of the app
+user_table_create = ("""CREATE TABLE IF NOT EXISTS users (
+                                user_id int PRIMARY KEY,
+                                first_name varchar,
+                                last_name varchar,
+                                gender varchar,
+                                level varchar
+                                );
 """)
 
-song_table_create = ("""
+# This is the dimension table containing information about the songs in the database. artist_id is a primary key of another dimension table so must be declared as not null to
+#ensure that there are no issues during joining, there must be a corresponding artist_id for a particular song_id
+song_table_create = ("""CREATE TABLE IF NOT EXISTS songs (
+                                song_id varchar PRIMARY KEY,
+                                title varchar,
+                                artist_id varchar NOT NULL, 
+                                year int,
+                                duration float
+                                );
 """)
 
-artist_table_create = ("""
+# This is the dimension table containing information about the artists in the database
+artist_table_create = ("""CREATE TABLE IF NOT EXISTS artists (
+                                artist_id varchar PRIMARY KEY,
+                                name varchar,
+                                location varchar,
+                                latitude float,
+                                longitude float
+                                );
 """)
 
-time_table_create = ("""
+# This is the dimension table containing information about timestamps of records in songplays table
+time_table_create = ("""CREATE TABLE IF NOT EXISTS time (
+                                start_time timestamp PRIMARY KEY,
+                                hour int,
+                                day int,
+                                week int,
+                                month int,
+                                year int,
+                                weekday varchar
+                                );
 """)
 
 # INSERT RECORDS
