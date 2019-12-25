@@ -8,14 +8,15 @@ time_table_drop = "DROP TABLE IF EXISTS time"
 
 # CREATE TABLES
 
-# This is the fact table that contains the primary keys from the below 4 Dimension tables so that JOINs can be made between the fact table and dimension tables
+# This is the fact table that contains the primary keys from the below 4 Dimension tables so that JOINs can be made between the fact table and dimension tables. Adding NOT NULL
+# to all the 4 primary keys from dimension tables as additional data quality check. All of the primary key fields in all the tables must contain a value.
 songplay_table_create = ("""CREATE TABLE IF NOT EXISTS songplays (
                                 songplay_id int PRIMARY KEY, 
-                                start_time timestamp, 
-                                user_id int, 
+                                start_time timestamp NOT NULL, 
+                                user_id int NOT NULL, 
                                 level varchar, 
-                                song_id varchar, 
-                                artist_id varchar, 
+                                song_id varchar NOT NULL, 
+                                artist_id varchar NOT NULL, 
                                 session_id int,
                                 location varchar,
                                 user_agent varchar
