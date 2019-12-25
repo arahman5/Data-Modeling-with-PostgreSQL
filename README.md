@@ -16,6 +16,7 @@ As a data engineer I created a Postgres database schema with tables and ETL pipe
 * `etl.ipynb` - reads and processes a single JSON log containing data about user activity and a single JSON log containing song metadata and loads the data into appropriate tables. This was used to develop the initial ETL pipeline with small amount of data.
 * `etl.py` - reads and processes all JSON logs and loads the data into the tables.
 * `README.md` - Provides a summary of the project and discussions on the data modelling.
+* `Resource` - Folder containing images that were used in the README.
 
 ## Choice of Database
 
@@ -79,7 +80,10 @@ python create_tables.py
 ```python
 python etl.py
 ```
-* Execute the below command in virtualenv terminal
+* Execute the below command in order in virtualenv terminal, the ipython-sql took a while to figure out that's why mentioning below
+```python
+pip install ipython-sql=0.3.6
+```
 ```python
 jupyter notebook
 ```
