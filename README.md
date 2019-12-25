@@ -52,3 +52,35 @@ Once the database and tables has been created a ETL Pipeline is applied to the u
 * Since the log file does not specify an ID for either the song or the artist, a join was performed to get the song ID and artist ID by querying the **songs and artists** tables to find matches based on song. The result of this query was then inserted into the **songplays** table alongwith all the other values that existed in the Dataframe for each of the column within the table.
 
 ## Running the scripts
+
+### Udacity Workspace
+
+To run the project in Udacity workspace, copy the contents of the repo in the workspace and ensure you have a version of python3 running. Then execute the below commands in the terminal in order:
+
+```python
+python create_tables.py
+```
+```python
+python etl.py
+```
+Then, open `test.ipynb` and execute the SQL queries in the notebook to see the output from the Database.
+
+### Locally in Ubuntu
+
+Ensure you are working with Ubuntu 16.04 or 18.04.
+
+* Firstly, install postgre in Ubuntu if it doesn't exist already by following this [link](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-16-04). **Only follow the installation section otherwise you may mess it up for running this Project**.
+* You will need to configure postgre to have a user named `student` with password `student` and create a database called `studentdb`. Follow this [video](https://www.youtube.com/watch?v=-LwI4HMR_Eg) to do this. You can skip the installation section in the video.
+* Setup Jupyter Notebook to run on your local machine if there isn't one already running by following until Step 3 of this [link](https://www.digitalocean.com/community/tutorials/how-to-set-up-jupyter-notebook-with-python-3-on-ubuntu-18-04). Copy the contents of this repo in the folder that you will create in Step 2.
+* Then execute the below commands in the virtualenv terminal in order (You will probably have to install some python modules to get it working):
+```python
+python create_tables.py
+```
+```python
+python etl.py
+```
+* Execute the below command in virtualenv terminal
+```python
+jupyter notebook
+```
+* Open `test.ipynb` from Jupyter notebook in browser and execute the SQL queries in the notebook to see the output from the Database.
