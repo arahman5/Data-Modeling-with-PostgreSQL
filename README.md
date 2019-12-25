@@ -30,7 +30,7 @@ The reason that I chose a relational database management system for this project
 
 ## Entity Relationship Diagram (ERD)
 
-![alt text](https://raw.githubusercontent.com/username/projectname/branch/path/to/img.png)
+![Image](https://github.com/arahman5/Data-Modeling-with-PostgreSQL/blob/master/resource/ERD.PNG)
 
 The above represents the entity relationship diagram which shows how the different keys within the JSON logs can be connected together in a star schema. **songplays** is the fact table showing foreign keys that connect this table to all the other dimension tables. **users, time, songs, artists** are all dimension tables, each containing a primary key unique to each table. A star schema was chosen for this database design because of the following reasons:
 
@@ -64,7 +64,9 @@ python create_tables.py
 ```python
 python etl.py
 ```
-Then, open `test.ipynb` and execute the SQL queries in the notebook to see the output from the Database.
+Then, open `test.ipynb` and execute the SQL queries in the notebook to see the output from the Database. 
+
+![Output from example query](https://github.com/arahman5/Data-Modeling-with-PostgreSQL/blob/master/resource/example_query.PNG)
 
 ### Locally in Ubuntu
 
